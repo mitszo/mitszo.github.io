@@ -4,7 +4,7 @@
   <title><![CDATA[mitszo's Blog]]></title>
   <link href="http://mitszo.github.com/atom.xml" rel="self"/>
   <link href="http://mitszo.github.com/"/>
-  <updated>2014-01-20T23:13:22+09:00</updated>
+  <updated>2014-01-20T23:16:29+09:00</updated>
   <id>http://mitszo.github.com/</id>
   <author>
     <name><![CDATA[mitszo]]></name>
@@ -18,9 +18,7 @@
     <link href="http://mitszo.github.com/blog/2014/01/20/rpi-serial-console/"/>
     <updated>2014-01-20T22:00:00+09:00</updated>
     <id>http://mitszo.github.com/blog/2014/01/20/rpi-serial-console</id>
-    <content type="html"><![CDATA[<h1>Raspberry PiにUSB-Serial接続する</h1>
-
-<p>いちいちsshとかも面倒なので、USB-Serial接続できるようにします。
+    <content type="html"><![CDATA[<p>いちいちsshとかも面倒なので、USB-Serial接続できるようにします。
 Mac前提。Linuxでもほとんど同じ。Windowsはわかりません。</p>
 
 <h2>用意するもの</h2>
