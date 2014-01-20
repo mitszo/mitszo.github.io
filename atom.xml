@@ -4,7 +4,7 @@
   <title><![CDATA[mitszo's Blog]]></title>
   <link href="http://mitszo.github.com/atom.xml" rel="self"/>
   <link href="http://mitszo.github.com/"/>
-  <updated>2014-01-20T23:06:34+09:00</updated>
+  <updated>2014-01-20T23:11:37+09:00</updated>
   <id>http://mitszo.github.com/</id>
   <author>
     <name><![CDATA[mitszo]]></name>
@@ -107,7 +107,7 @@ Mac前提。Linuxでもほとんど同じ。Windowsはわかりません。</p>
 
 
 <p>をつなぎます。
-こんな感じ。<img src="images/IMG_3828.jpg" alt="ピンをつないだ図" /></p>
+こんな感じ。<img src="http://mitszo.github.com/images/IMG_3828.jpg" alt="ピンをつないだ図" /></p>
 
 <p>できたら必要なドライバをインストールして、MacとUSBでつないでおきます。</p>
 
@@ -123,7 +123,7 @@ Mac前提。Linuxでもほとんど同じ。Windowsはわかりません。</p>
 <h2>電源ON!</h2>
 
 <p>SDカードをさして、Raspberry Piを電源につなげばscreenでブートの様子が見られます。
-<img src="images/screen.png" alt="screen" /></p>
+<img src="http://mitszo.github.com/images/screen.png" alt="screen" /></p>
 
 <p>loginプロンプトが出たら<code>pi/raspberry</code>でログイン。
 後はssh接続したときと一緒。</p>
