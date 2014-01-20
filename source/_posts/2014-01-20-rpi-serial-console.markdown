@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "rpi-serial-console"
+title: "Raspberry PiにUSB-Serial接続する"
 date: 2014-01-20 22:00
 comments: true
 categories: RaspberryPi tips
 ---
 
 
-# Raspberry Piをシリアルコンソールから操作する
+# Raspberry PiにUSB-Serial接続する
 
 いちいちsshとかも面倒なので、USB-Serial接続できるようにします。
 Mac前提。Linuxでもほとんど同じ。Windowsはわかりません。
