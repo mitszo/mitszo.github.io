@@ -69,7 +69,7 @@ pvコマンド使うと進捗表示されてわかりやすい。
 * GNDとFND
 
 をつなぎます。
-こんな感じ。![ピンをつないだ図](images/IMG_3828.jpg)
+こんな感じ。![ピンをつないだ図](/images/IMG_3828.jpg)
 
 できたら必要なドライバをインストールして、MacとUSBでつないでおきます。
 
@@ -85,7 +85,7 @@ screen /dev/tty.usbserial-A600e1CH 115200,cs8,cstopb
 ## 電源ON!
 
 SDカードをさして、Raspberry Piを電源につなげばscreenでブートの様子が見られます。
-![screen](images/screen.png)
+![screen](/images/screen.png)
 
 loginプロンプトが出たら`pi/raspberry`でログイン。
 後はssh接続したときと一緒。
