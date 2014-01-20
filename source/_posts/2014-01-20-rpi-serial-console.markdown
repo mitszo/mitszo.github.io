@@ -6,9 +6,6 @@ comments: true
 categories: RaspberryPi tips
 ---
 
-
-# Raspberry PiにUSB-Serial接続する
-
 いちいちsshとかも面倒なので、USB-Serial接続できるようにします。
 Mac前提。Linuxでもほとんど同じ。Windowsはわかりません。
 
