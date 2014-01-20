@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tips | mitszo's Blog]]></title>
+  <link href="http://mitszo.github.com/blog/categories/tips/atom.xml" rel="self"/>
+  <link href="http://mitszo.github.com/"/>
+  <updated>2014-01-20T23:00:30+09:00</updated>
+  <id>http://mitszo.github.com/</id>
+  <author>
+    <name><![CDATA[mitszo]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[rpi-serial-console]]></title>
+    <link href="http://mitszo.github.com/blog/2014/01/20/rpi-serial-console/"/>
+    <updated>2014-01-20T22:00:00+09:00</updated>
+    <id>http://mitszo.github.com/blog/2014/01/20/rpi-serial-console</id>
+    <content type="html"><![CDATA[<h1>Raspberry Piをシリアルコンソールから操作する</h1>
+
+<p>いちいちsshとかも面倒なので、USB-Serial接続できるようにします。
+Mac前提。Linuxでもほとんど同じ。Windowsはわかりません。</p>
+
+<h2>用意するもの</h2>
+
+<ul>
+<li>USB-Serial変換アダプタ</li>
+<li>ピンやコネクタ類</li>
+</ul>
+
+
+<p>僕が買った変換アダプタは<a href="http://www.switch-science.com/catalog/343/">Sparkfunの3.3Vの確かコレ</a></p>
+
+<h2>Raspbianの準備</h2>
+
+<p>http://www.raspberrypi.org/downloads
+からダウンロード。
+最新の2014-01-09ではうまく起動しなかった。以下、手元にあった2013-09-25で試した。
+過去のイメージは<a href="http://downloads.raspberrypi.org/raspbian/images/">このあたり</a>から。</p>
+
+<p>Raspbianでしか試してません。ddする前にSDカード確認。
+<code>
+$ mount
+/dev/disk1 on / (hfs, local, journaled)
+devfs on /dev (devfs, local, nobrowse)
+map -hosts on /net (autofs, nosuid, automounted, nobrowse)
+map auto_home on /home (autofs, automounted, nobrowse)
+/dev/disk2s1 on /Volumes/Untitled (msdos, local, nodev, nosuid, noowners)
+</code>
+<code>/dev/disk2</code> ですね。
+<code>
+$ sudo umount /Volumes/Untitled/
+Password:
+$ mount
+/dev/disk1 on / (hfs, local, journaled)
+devfs on /dev (devfs, local, nobrowse)
+map -hosts on /net (autofs, nosuid, automounted, nobrowse)
+map auto_home on /home (autofs, automounted, nobrowse)
+</code>
+アンマウントしておいて、</p>
+
+<p><code>
+$ unzip 2013-09-25-wheezy-raspbian.zip
+Archive:  2013-09-25-wheezy-raspbian.zip
+  inflating: 2013-09-25-wheezy-raspbian.img
+</code>
+zipファイルを展開して、ddで書き込み。
+<code>
+$ pv 2013-09-25-wheezy-raspbian.img | sudo dd of=/dev/disk2 bs=4096
+1.86GiB 0:04:15 [ 7.6MiB/s] [                                &lt;=&gt;               ]70% ETA 0:02:08
+</code>
+pvコマンド使うと進捗表示されてわかりやすい。
+（Macならportsで入る。Debian系ならaptで。）</p>
+
+<h2>USB-Serial変換アダプタの用意</h2>
+
+<p>ピンはハンダ付けするなりしておいて、RPiの<a href="http://elinux.org/RPi_Low-level_peripherals">GPIO</a>とUSB-Serial変換ボードの、</p>
+
+<ul>
+<li>TxとRx</li>
+<li>RxとTx</li>
+<li>GNDとFND</li>
+</ul>
+
+
+<p>をつなぎます。
+こんな感じ。<img src="images/IMG_3828.jpg" alt="ピンをつないだ図" /></p>
+
+<p>できたら必要なドライバをインストールして、MacとUSBでつないでおきます。</p>
+
+<h2>コンソール接続</h2>
+
+<p>やりかたはいろいろあるでしょうが、screenが無難な気がする。
+電源入れる前にターミナルで実行します。</p>
+
+<p><code>
+screen /dev/tty.usbserial-A600e1CH 115200,cs8,cstopb
+</code></p>
+
+<h2>電源ON!</h2>
+
+<p>SDカードをさして、Raspberry Piを電源につなげばscreenでブートの様子が見られます。
+<img src="images/screen.png" alt="screen" /></p>
+
+<p>loginプロンプトが出たら<code>pi/raspberry</code>でログイン。
+後はssh接続したときと一緒。</p>
+]]></content>
+  </entry>
+  
+</feed>

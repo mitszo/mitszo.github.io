@@ -9,8 +9,9 @@
   <meta name="author" content="mitszo">
 
   
-  <meta name="description" content="Raspberry Pi Raspberry Pi は、700MHzのARMと256MBのメモリー、SDカードスロットやUSBポートを搭載した手のひらサイズPC。
-HDMIもついてるのでモニターとキーボード、マウスをつないでデスクトップな使い方も可能。でもやっぱりモッサリ感はぬぐえない。 目的、 &hellip;">
+  <meta name="description" content="Raspberry Piをシリアルコンソールから操作する いちいちsshとかも面倒なので、USB-Serial接続できるようにします。
+Mac前提。Linuxでもほとんど同じ。Windowsはわかりません。 用意するもの USB-Serial変換アダプタ
+ピンやコネクタ類 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +78,150 @@ HDMIもついてるのでモニターとキーボード、マウスをつない�
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/01/20/rpi-serial-console/">Rpi-serial-console</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-20T22:00:00+09:00" pubdate data-updated="true">Jan 20<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>Raspberry Piをシリアルコンソールから操作する</h1>
+
+<p>いちいちsshとかも面倒なので、USB-Serial接続できるようにします。
+Mac前提。Linuxでもほとんど同じ。Windowsはわかりません。</p>
+
+<h2>用意するもの</h2>
+
+<ul>
+<li>USB-Serial変換アダプタ</li>
+<li>ピンやコネクタ類</li>
+</ul>
+
+
+<p>僕が買った変換アダプタは<a href="http://www.switch-science.com/catalog/343/">Sparkfunの3.3Vの確かコレ</a></p>
+
+<h2>Raspbianの準備</h2>
+
+<p>http://www.raspberrypi.org/downloads
+からダウンロード。
+最新の2014-01-09ではうまく起動しなかった。以下、手元にあった2013-09-25で試した。
+過去のイメージは<a href="http://downloads.raspberrypi.org/raspbian/images/">このあたり</a>から。</p>
+
+<p>Raspbianでしか試してません。ddする前にSDカード確認。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ mount
+</span><span class='line'>/dev/disk1 on / (hfs, local, journaled)
+</span><span class='line'>devfs on /dev (devfs, local, nobrowse)
+</span><span class='line'>map -hosts on /net (autofs, nosuid, automounted, nobrowse)
+</span><span class='line'>map auto_home on /home (autofs, automounted, nobrowse)
+</span><span class='line'>/dev/disk2s1 on /Volumes/Untitled (msdos, local, nodev, nosuid, noowners)</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>/dev/disk2</code> ですね。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo umount /Volumes/Untitled/
+</span><span class='line'>Password:
+</span><span class='line'>$ mount
+</span><span class='line'>/dev/disk1 on / (hfs, local, journaled)
+</span><span class='line'>devfs on /dev (devfs, local, nobrowse)
+</span><span class='line'>map -hosts on /net (autofs, nosuid, automounted, nobrowse)
+</span><span class='line'>map auto_home on /home (autofs, automounted, nobrowse)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>アンマウントしておいて、</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ unzip 2013-09-25-wheezy-raspbian.zip
+</span><span class='line'>Archive:  2013-09-25-wheezy-raspbian.zip
+</span><span class='line'>  inflating: 2013-09-25-wheezy-raspbian.img</span></code></pre></td></tr></table></div></figure>
+
+
+<p>zipファイルを展開して、ddで書き込み。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ pv 2013-09-25-wheezy-raspbian.img | sudo dd of=/dev/disk2 bs=4096
+</span><span class='line'>1.86GiB 0:04:15 [ 7.6MiB/s] [                                &lt;=&gt;               ]70% ETA 0:02:08</span></code></pre></td></tr></table></div></figure>
+
+
+<p>pvコマンド使うと進捗表示されてわかりやすい。
+（Macならportsで入る。Debian系ならaptで。）</p>
+
+<h2>USB-Serial変換アダプタの用意</h2>
+
+<p>ピンはハンダ付けするなりしておいて、RPiの<a href="http://elinux.org/RPi_Low-level_peripherals">GPIO</a>とUSB-Serial変換ボードの、</p>
+
+<ul>
+<li>TxとRx</li>
+<li>RxとTx</li>
+<li>GNDとFND</li>
+</ul>
+
+
+<p>をつなぎます。
+こんな感じ。<img src="images/IMG_3828.jpg" alt="ピンをつないだ図" /></p>
+
+<p>できたら必要なドライバをインストールして、MacとUSBでつないでおきます。</p>
+
+<h2>コンソール接続</h2>
+
+<p>やりかたはいろいろあるでしょうが、screenが無難な気がする。
+電源入れる前にターミナルで実行します。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>screen /dev/tty.usbserial-A600e1CH 115200,cs8,cstopb</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>電源ON!</h2>
+
+<p>SDカードをさして、Raspberry Piを電源につなげばscreenでブートの様子が見られます。
+<img src="images/screen.png" alt="screen" /></p>
+
+<p>loginプロンプトが出たら<code>pi/raspberry</code>でログイン。
+後はssh接続したときと一緒。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -432,6 +577,10 @@ Sambaクライアントで192.168.10.1/usbdriveに接続できるか確認。</p
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/01/20/rpi-serial-console/">rpi-serial-console</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/12/19/wifi-nas-with-raspberry-pi/">Raspberry PiでモバイルWiFi NAS</a>
       </li>
     
@@ -449,7 +598,7 @@ Sambaクライアントで192.168.10.1/usbdriveに接続できるか確認。</p
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - mitszo -
+  Copyright &copy; 2014 - mitszo -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
