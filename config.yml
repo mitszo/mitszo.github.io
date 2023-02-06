@@ -1,15 +1,15 @@
-baseURL: # if your site is in 'https', then make sure your base url isn't written using 'http' otherwise your sitemap would contain http (as opposeed to https) URLs. This would affect Google indexing of your URLs.
-title: charlola.mode
+baseURL: https://mitszo.github.io/
+title: mitszo
 paginate: 5
 theme: charlolamode
 
 
 
-# menu:
-#     main:
-#         - name: Contact
-#           url: /contact/
-#           weight: 30
+menu:
+    main:
+       - name: Contact
+         url: /contact/
+         weight: 30
 
       #  - name: Articles
       #    url: /articles/
@@ -52,7 +52,7 @@ params:
         imageTitle: my image
         # imageWidth: 120
         # imageHeight: 120
-        # buttons:
+        buttons:
         #     - name: Don't click me
         #       url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
     mainSections:
