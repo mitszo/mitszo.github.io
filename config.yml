@@ -65,6 +65,8 @@ params:
           url: "https://flickr.com/mitszo"
         - name: instagram
           url: "https://instagram.com/mitszo"
+        - name: bluesky
+          url: "https://bsky.app/profile/mitszo.bsky.social"
 
       # add more social icons. find more in svg.html file
       # - name: youtube
