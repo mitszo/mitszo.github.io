@@ -13,6 +13,11 @@ menu:
         url: /contact/
         weight: 30
 
+      - identifier: work
+        name: Work
+        url: /work/
+        weight: 20
+
       #  - name: Articles
       #    url: /articles/
       #    weight: 20
