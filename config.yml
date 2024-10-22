@@ -1,45 +1,33 @@
 baseURL: https://mitszo.org/
-title: mitszo
+title: mitszo's portfolio
 pagination:
   pagerSize: 5
 theme: PaperMod
 
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+# enableInlineShortcodes: true
+# enableEmoji: true
+# pygmentsUseClasses: true
 
-
-menu:
-    main:
-      - identifier: contact
-        name: Contact
-        url: /contact/
-        weight: 30
-
-      - identifier: work
-        name: Work
-        url: /work/
-        weight: 20
-
-      #  - name: Articles
-      #    url: /articles/
-      #    weight: 20
-      #  - name: Projects
-      #    url: /projects/
-      #    weight: 15
-
-     # - name: Categories
-        #   url: /categories/
-        #   weight: 10
-        # - name: new Tab
-        #   url: /newtab/
-        #   weight: defines order of tabs
-   
-
+minify:
+    disableXML: true
+    minifyOutput: true
 
 params:
-    author: Author's Name
+    env: production
+    title: mitszo's portfolio
+    description: mitszo's portfolio
+    author: Me
 
-
-    defaultTheme: auto
     # disableThemeToggle: true
+    # images: ["<link or path of image for opengraph, twitter-cards>"]
+    DateFormat: "2006-01-02"
+    defaultTheme: auto
+    defaultThemeToggle: true
+
     ShowShareButtons: true
     ShowReadingTime: true
     displayFullLangName: true
@@ -95,12 +83,34 @@ params:
           safari_pinned_tab: "/images/apple-touch-icon.png"
 
 
+menu:
+    main:
+      - identifier: contact
+        name: Contact
+        url: /contact/
+        weight: 30
 
-enableInlineShortcodes: true
-enableRobotsTXT: true
-enableEmoji: true
-pygmentsUseClasses: true
+      - identifier: work
+        name: Work
+        url: /work/
+        weight: 20
 
-minify:
-    disableXML: true
+      #  - name: Articles
+      #    url: /articles/
+      #    weight: 20
+      #  - name: Projects
+      #    url: /projects/
+      #    weight: 15
+
+     # - name: Categories
+        #   url: /categories/
+        #   weight: 10
+        # - name: new Tab
+        #   url: /newtab/
+        #   weight: defines order of tabs
+   
+
+
+
+
 
