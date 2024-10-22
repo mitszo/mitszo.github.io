@@ -1,15 +1,17 @@
 baseURL: https://mitszo.org/
 title: mitszo
-paginate: 5
-theme: charlolamode
+pagination:
+  pagerSize: 5
+theme: PaperMod
 
 
 
 menu:
     main:
-       - name: Contact
-         url: /contact/
-         weight: 30
+      - identifier: contact
+        name: Contact
+        url: /contact/
+        weight: 30
 
       #  - name: Articles
       #    url: /articles/
