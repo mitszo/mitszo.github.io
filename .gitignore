@@ -1,1 +1,3 @@
-public
+.direnv/
+public/
+.envrc
