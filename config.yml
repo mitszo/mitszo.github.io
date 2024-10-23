@@ -34,6 +34,7 @@ params:
     ShowBreadCrumbs: true
     ShowCodeCopyButtons: true
     ShowToc: true
+    comments: false
 
     profileMode:
         # Disable to populate home page with 'mainSections' content
@@ -73,6 +74,9 @@ params:
       # - name: facebook
       #   url: yoururl
 
+    analytics:
+      google:
+        SiteVerificationTag: "G-WN2C07CFWP"
 
     # change favicon in images folder (icon for web tab)
     assets:
