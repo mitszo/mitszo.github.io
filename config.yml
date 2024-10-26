@@ -11,6 +11,7 @@ buildExpired: false
 # enableInlineShortcodes: true
 # enableEmoji: true
 # pygmentsUseClasses: true
+relativeURLs: true
 
 minify:
     disableXML: true
