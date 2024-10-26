@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://mitszo.org/contact/</loc>
+    <loc>/contact/</loc>
   </url><url>
-    <loc>https://mitszo.org/work/</loc>
+    <loc>/work/</loc>
   </url><url>
-    <loc>https://mitszo.org/categories/</loc>
+    <loc>/categories/</loc>
   </url><url>
-    <loc>https://mitszo.org/</loc>
+    <loc>/</loc>
   </url><url>
-    <loc>https://mitszo.org/tags/</loc>
+    <loc>/tags/</loc>
   </url>
 </urlset>
