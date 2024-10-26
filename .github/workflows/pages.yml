@@ -25,6 +25,8 @@ jobs:
           hugo-version: '0.135.0'
 
       - name: Build
+        env:
+          HUGO_BASEURL: '/'
         run: hugo --minify
 
       - name: Deploy
